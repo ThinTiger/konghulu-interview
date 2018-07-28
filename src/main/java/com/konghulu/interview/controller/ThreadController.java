@@ -1,11 +1,16 @@
 package com.konghulu.interview.controller;
 
+import com.konghulu.interview.common.ThreadUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.FutureTask;
 
+/**
+ * @author lining
+ * @date 2018-07-27
+ */
 @RestController
 @RequestMapping("thread")
 public class ThreadController {
@@ -19,7 +24,7 @@ public class ThreadController {
 	    @Override
 	    public String call() throws Exception {
 		System.out.println(Thread.currentThread().getId());
-	        System.out.println(Thread.currentThread().getName());
+		System.out.println(Thread.currentThread().getName());
 		Thread.sleep(5000);
 		return "123";
 	    }
@@ -27,8 +32,7 @@ public class ThreadController {
 	System.out.println("outer print1!~");
 
 	FutureTask<String> futureTask = new FutureTask<>(callable);
-	Thread thread = new Thread(futureTask);
-	thread.start();
+	ThreadUtil.execGeneralTask(futureTask);
 	System.out.println("outer print2!~");
 	try {
 	    result = futureTask.get();
@@ -37,5 +41,13 @@ public class ThreadController {
 	}
 
 	return result;
+    }
+
+    @RequestMapping("/pool")
+    public String poolTask() {
+	ThreadUtil.execGeneralTask(() -> {
+	    System.out.println("exec one task!~");
+	    System.out.println(Thread.currentThread().getName());
+	}); return "done!~";
     }
 }

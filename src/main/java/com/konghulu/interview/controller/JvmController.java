@@ -4,9 +4,13 @@ import com.konghulu.interview.domain.Person;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author lining
+ * @date 2018-07-27
+ */
 @RestController
 @RequestMapping("jvm")
-public class JVMController {
+public class JvmController {
 
     @RequestMapping("/address")
     public String address(){
