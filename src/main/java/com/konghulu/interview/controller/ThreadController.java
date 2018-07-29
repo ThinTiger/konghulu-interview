@@ -19,15 +19,11 @@ public class ThreadController {
     public String callable() {
 	String result = null;
 
-	Callable<String> callable = new Callable<String>() {
-
-	    @Override
-	    public String call() throws Exception {
-		System.out.println(Thread.currentThread().getId());
-		System.out.println(Thread.currentThread().getName());
-		Thread.sleep(5000);
-		return "123";
-	    }
+	Callable<String> callable = () -> {
+	    System.out.println(Thread.currentThread().getId());
+	    System.out.println(Thread.currentThread().getName());
+	    Thread.sleep(5000);
+	    return "123";
 	};
 	System.out.println("outer print1!~");
 
@@ -45,9 +41,16 @@ public class ThreadController {
 
     @RequestMapping("/pool")
     public String poolTask() {
+	ThreadUtil.printQueueCount();
 	ThreadUtil.execGeneralTask(() -> {
 	    System.out.println("exec one task!~");
 	    System.out.println(Thread.currentThread().getName());
-	}); return "done!~";
+	    try {
+		Thread.sleep(10000);
+	    } catch (Exception ex) {
+		ex.printStackTrace();
+	    }
+	});
+	return "done!~";
     }
 }

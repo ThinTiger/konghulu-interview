@@ -2,6 +2,7 @@ package com.konghulu.interview.common;
 
 import com.google.common.util.concurrent.ThreadFactoryBuilder;
 
+import javax.annotation.processing.SupportedSourceVersion;
 import java.util.concurrent.*;
 
 /**
@@ -10,17 +11,22 @@ import java.util.concurrent.*;
  */
 public class ThreadUtil {
 
-    private static ExecutorService threadPoolExecutor;
+    private static ThreadPoolExecutor threadPoolExecutor;
 
     static {
 	ThreadFactory namedThreadFactory = new ThreadFactoryBuilder().setNameFormat("general-pool-%d").build();
 
-	threadPoolExecutor = new ThreadPoolExecutor(1, 100, 0L,
-		TimeUnit.MILLISECONDS, new LinkedBlockingQueue<Runnable>(1024), namedThreadFactory,
+	threadPoolExecutor = new ThreadPoolExecutor(2, 100, 60L,
+		TimeUnit.SECONDS, new LinkedBlockingQueue<>(10), namedThreadFactory,
 		new ThreadPoolExecutor.AbortPolicy());
+	//threadPoolExecutor = Executors.newFixedThreadPool(10, namedThreadFactory);
     }
 
     public static void execGeneralTask(Runnable runnable) {
 	threadPoolExecutor.execute(runnable);
+    }
+
+    public static void printQueueCount(){
+	System.out.println(threadPoolExecutor.getQueue().size());
     }
 }
