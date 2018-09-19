@@ -21,18 +21,19 @@ public class SpringController implements ApplicationContextAware {
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext)
-	    throws BeansException {
-	this.applicationContext = applicationContext;
+            throws BeansException {
+        this.applicationContext = applicationContext;
     }
 
     @RequestMapping("/context")
     public String applicationContext() {
-	System.out.println(applicationContext.getApplicationName());
-	Consumer<String> consumer = (x) -> {
-	    System.out.println(x);
-	};
-	Arrays.stream(applicationContext.getBeanDefinitionNames()).forEach(consumer);
-	System.out.println(applicationContext.getDisplayName());
-	return applicationContext.getClass().getName();
+        System.out.println(applicationContext.getApplicationName());
+        Consumer<String> consumer = (x) -> {
+            System.out.println(x);
+        };
+        Arrays.stream(applicationContext.getBeanDefinitionNames()).forEach(consumer);
+        System.out.println(applicationContext.getDisplayName());
+        return applicationContext.getClass().getName();
     }
+
 }
