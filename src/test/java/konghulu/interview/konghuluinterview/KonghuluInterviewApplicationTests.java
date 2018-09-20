@@ -20,6 +20,13 @@ public class KonghuluInterviewApplicationTests {
         System.out.println(annotation.alias());
     }
 
+    /**
+     * AnnotationUtils.findAnnotation(line 702)->
+     * AnnotationUtils.synthesizeAnnotation(line 1505)->
+     * new SynthesizedAnnotationInvocationHandler(line 91) ->
+     * AbstractAliasAwareAnnotationAttributeExtractor<S>.getAttributeValue(line 97)->
+     * DefaultAnnotationAttributeExtractor.getRawAttributeValue(line 60)
+     */
     @Test
     public void testAliasforBySpring() {
         AliasForTest annotation = AnnotationUtils.findAnnotation(getClass(), AliasForTest.class);
