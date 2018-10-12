@@ -44,4 +44,12 @@ public class KonghuluInterviewApplicationTests {
         TreeNode tree = new TreeNode(Lists.newArrayList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11));
         TreeNode.DLR(tree);
     }
+
+    /**
+     * null + "-" + null会发生什么
+     */
+    @Test
+    public void testNullOperation() {
+        System.out.println(null + "-" + null);
+    }
 }
