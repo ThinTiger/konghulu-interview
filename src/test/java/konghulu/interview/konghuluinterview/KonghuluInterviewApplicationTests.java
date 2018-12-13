@@ -1,8 +1,10 @@
 package konghulu.interview.konghuluinterview;
 
 import com.konghulu.interview.annotation.AliasForTest;
+import com.konghulu.interview.domain.MyCondition;
 import com.konghulu.interview.domain.TreeNode;
 import com.konghulu.interview.server.KonghuluInterviewApplication;
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = KonghuluInterviewApplication.class)
 @AliasForTest(value = "a")
+@Slf4j
 public class KonghuluInterviewApplicationTests {
 
     @Test
@@ -45,11 +48,24 @@ public class KonghuluInterviewApplicationTests {
         TreeNode.DLR(tree);
     }
 
-    /**
-     * null + "-" + null会发生什么
-     */
     @Test
     public void testNullOperation() {
         System.out.println(null + "-" + null);
+    }
+
+    @Test
+    public void testEnv(){
+        System.out.println(System.getProperty("DEPLOY_ENV"));
+        System.out.println(System.getenv("DEPLOY_ENV"));
+        System.out.println(System.getProperty("JAVA_HOME"));
+        System.out.println(System.getenv("JAVA_HOME"));
+    }
+
+    @Test
+    public void testLog(){
+        MyCondition condition = new MyCondition();
+        condition.setClaimType(1);
+        condition.setInsurerId(11l);
+        log.info("test log:{}", condition);
     }
 }

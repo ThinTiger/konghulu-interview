@@ -1,9 +1,12 @@
 package com.konghulu.interview.controller;
 
+import com.konghulu.interview.domain.MyCondition;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
@@ -34,6 +37,13 @@ public class SpringController implements ApplicationContextAware {
         Arrays.stream(applicationContext.getBeanDefinitionNames()).forEach(consumer);
         System.out.println(applicationContext.getDisplayName());
         return applicationContext.getClass().getName();
+    }
+
+    @RequestMapping(value = "/builder", method = RequestMethod.POST)
+    public String modelBuilder(@RequestBody MyCondition condition){
+        System.out.println(condition.getInsurerId());
+        System.out.println(condition.getClaimType());
+        return "~~";
     }
 
 }
