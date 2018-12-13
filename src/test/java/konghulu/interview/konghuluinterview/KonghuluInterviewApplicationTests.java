@@ -12,11 +12,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.AnnotationUtils;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = KonghuluInterviewApplication.class)
 @AliasForTest(value = "a")
 @Slf4j
-public class KonghuluInterviewApplicationTests {
+public class KonghuluInterviewApplicationTests extends BaseApplicationTest {
 
     @Test
     public void testAliasfor() {
