@@ -1,16 +1,12 @@
-package konghulu.interview.konghuluinterview;
+package com.konghulu.interview.test;
 
 import com.konghulu.interview.annotation.AliasForTest;
 import com.konghulu.interview.domain.MyCondition;
 import com.konghulu.interview.domain.TreeNode;
-import com.konghulu.interview.server.KonghuluInterviewApplication;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.AnnotationUtils;
-import org.springframework.test.context.junit4.SpringRunner;
 
 @AliasForTest(value = "a")
 @Slf4j

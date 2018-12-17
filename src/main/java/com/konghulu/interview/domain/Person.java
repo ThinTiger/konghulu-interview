@@ -14,4 +14,6 @@ public class Person {
     private String name;
 
     private Byte age;
+
+    private String eName;
 }

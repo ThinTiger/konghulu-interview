@@ -1,4 +1,4 @@
-package konghulu.interview.konghuluinterview;
+package com.konghulu.interview.test;
 
 import com.konghulu.interview.annotation.AliasForTest;
 import com.konghulu.interview.server.KonghuluInterviewApplication;
