@@ -6,10 +6,8 @@ import com.konghulu.interview.domain.Person;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -80,5 +78,22 @@ public class LambdaTests extends BaseApplicationTest {
         List<String> lowerNameList = normalList.stream().map(Person::getEName).map(String::toLowerCase).collect(Collectors.toList());
 
         log.info("lowerNameList---" + lowerNameList);
+    }
+
+    @Test
+    public void multiFunctionTest() {
+        System.out.println(multiGetResult(
+            Arrays.asList(
+                    list -> list.stream().collect(Collectors.summarizingInt(x -> x)),
+                    list -> list.stream().filter(x -> x < 50).sorted().collect(Collectors.toList()),
+                    list -> list.stream().collect(Collectors.groupingBy(x -> (x % 2 == 0 ? "even" : "odd"))),
+                    list -> list.stream().sorted().collect(Collectors.toList()),
+                    list -> list.stream().sorted().map(Math::sqrt).collect(Collectors.toMap(x -> x, y -> Math.pow(2, y)))),
+            Arrays.asList(64, 49, 25, 16, 9, 4, 1, 81, 36)));
+
+    }
+
+    public <T, R> List<R> multiGetResult(List<Function<List<T>, R>> functions, List<T> list) {
+        return functions.stream().map(f -> f.apply(list)).collect(Collectors.toList());
     }
 }
