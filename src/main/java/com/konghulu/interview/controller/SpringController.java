@@ -1,6 +1,8 @@
 package com.konghulu.interview.controller;
 
 import com.konghulu.interview.domain.MyCondition;
+import com.konghulu.interview.domain.Person;
+import com.konghulu.interview.enums.LevelCategoryEnum;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
@@ -46,4 +48,8 @@ public class SpringController implements ApplicationContextAware {
         return "~~";
     }
 
+    @RequestMapping(value = "/serialize")
+    public Person serializeRule(){
+        return Person.builder().age((byte)18).name("lining").level(LevelCategoryEnum.get(1)).id(1).build();
+    }
 }

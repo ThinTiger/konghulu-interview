@@ -28,9 +28,9 @@ public class LambdaTests extends BaseApplicationTest {
         nullList = null;
         empltyList = Lists.newArrayList();
         normalList = Lists.newArrayList(
-                new Person(1, "阿胜", (byte) 18, "Tony"),
-                new Person(2, "阿进", (byte) 19, "Pony"),
-                new Person(2, "阿嘉", (byte) 20, "Cony")
+                new Person(1, "阿胜", (byte) 18, "Tony", null),
+                new Person(2, "阿进", (byte) 19, "Pony", null),
+                new Person(2, "阿嘉", (byte) 20, "Cony", null)
         );
     }
 
