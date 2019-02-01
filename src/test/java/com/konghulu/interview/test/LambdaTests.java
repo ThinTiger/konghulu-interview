@@ -3,6 +3,7 @@ package com.konghulu.interview.test;
 import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.konghulu.interview.domain.Person;
+import com.konghulu.interview.enums.LevelCategoryEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
@@ -28,9 +29,9 @@ public class LambdaTests extends BaseApplicationTest {
         nullList = null;
         empltyList = Lists.newArrayList();
         normalList = Lists.newArrayList(
-                new Person(1, "阿胜", (byte) 18, "Tony", null),
-                new Person(2, "阿进", (byte) 19, "Pony", null),
-                new Person(2, "阿嘉", (byte) 20, "Cony", null)
+                new Person(1, "阿胜", (byte) 18, "Tony", LevelCategoryEnum.HIGH),
+                new Person(2, "阿进", (byte) 19, "Pony", LevelCategoryEnum.MID),
+                new Person(2, "阿嘉", (byte) 20, "Cony", LevelCategoryEnum.LOW)
         );
     }
 

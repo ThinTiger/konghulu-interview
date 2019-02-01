@@ -11,9 +11,9 @@ import java.util.List;
  **/
 public enum LevelCategoryEnum {
 
-    HIGH(1, "Product&Eligibility"),
-    MID(2, "Cover and Benefits"),
-    LOW(3, "Premium and Payment");
+    HIGH(1, "high level~"),
+    MID(2, "mid level~"),
+    LOW(3, "low level~");
 
     private Integer code;
 
