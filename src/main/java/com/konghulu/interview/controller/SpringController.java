@@ -3,7 +3,9 @@ package com.konghulu.interview.controller;
 import com.konghulu.interview.domain.MyCondition;
 import com.konghulu.interview.domain.Person;
 import com.konghulu.interview.enums.LevelCategoryEnum;
+import com.konghulu.interview.handler.AbstractBuilderHandler;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
 import java.util.function.Consumer;
 
 /**
@@ -21,6 +25,12 @@ import java.util.function.Consumer;
 @RestController
 @RequestMapping("spring")
 public class SpringController implements ApplicationContextAware {
+
+    @Autowired
+    private Map<String, AbstractBuilderHandler> handlerMap;
+
+    @Autowired
+    private List<AbstractBuilderHandler> handlerList;
 
     ApplicationContext applicationContext;
 
