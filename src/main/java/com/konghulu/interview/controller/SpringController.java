@@ -6,6 +6,7 @@ import com.konghulu.interview.enums.LevelCategoryEnum;
 import com.konghulu.interview.handler.AbstractBuilderHandler;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,6 +32,9 @@ public class SpringController implements ApplicationContextAware {
 
     @Autowired
     private List<AbstractBuilderHandler> handlerList;
+
+    @Value("${konghulu.completeMode}")
+    private Boolean completeMode;
 
     ApplicationContext applicationContext;
 

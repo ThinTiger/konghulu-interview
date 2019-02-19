@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -20,5 +22,10 @@ public class DateTests extends BaseApplicationTest {
         System.out.println(now.toGMTString());
         System.out.println(now.toLocaleString());
         System.out.println(now.getTimezoneOffset());
+
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        Calendar nowTime = Calendar.getInstance();
+        nowTime.add(Calendar.MINUTE, 5);
+        System.out.println(sdf.format(nowTime.getTime()));
     }
 }
