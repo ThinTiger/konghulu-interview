@@ -16,7 +16,7 @@ import java.util.Date;
 public class DateTests extends BaseApplicationTest {
 
     @Test
-    public void timeZoneTest(){
+    public void timeZoneTest() {
         Date now = new Date();
         log.info("----now" + now);
         System.out.println(now.toGMTString());
@@ -27,5 +27,11 @@ public class DateTests extends BaseApplicationTest {
         Calendar nowTime = Calendar.getInstance();
         nowTime.add(Calendar.MINUTE, 5);
         System.out.println(sdf.format(nowTime.getTime()));
+    }
+
+    @Test
+    public void timestampTest() {
+        Long ts1 = -842778000000L;
+        System.out.println(new Date(ts1));
     }
 }
